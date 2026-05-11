@@ -1,1 +1,40 @@
+/*====================================================
+CREATE DATABASE FOR SCHEMA
+
+WARNING : 
+          Running this script will drop the entire 'Datawarehouse' database if it exist.
+          ALL data in the database will be permanently deleted. proceed with caution 
+          and ensure you have proper backup running this script.
+
+note :- i have already run this script again and my all databse are drop so i created new database : -
+'dataWarehouse2';
+==========================================================*/
+--Create Database 'DataWarehouse' 
+USE master;
+GO
+
+--Drop and recreate the 'DataWarehouse' databse 
+IF EXISTS (SELECT 1 FROM sys.databases WHERE name = 'DataWarehouse')
+BEGIN
+	ALTER DATABASE dateWarehouse SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+	DROP DATABASE DataWarehouse;
+END;
+GO
+
+-- Create the 'dataWarehouse' database
+
+CREATE SCHEMA bronze;
+GO
+
+
+--Craete Schemas
+
+CREATE SCHEMA silver;
+GO
+
+
+CREATE SCHEMA gold;
+GO
+
+
 
